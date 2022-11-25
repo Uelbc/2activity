@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
-    private TextView textView1;
-    private TextView textView2;
-    private TextView textView3;
+    private TextView textView4;
+    private TextView textView5;
+    private TextView textView6;
     private int[] a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +18,10 @@ public class MainActivity2 extends AppCompatActivity {
         if(bundle != null) {
             a = bundle.getIntArray("123");
         }
-        textView2=findViewById(R.id.textView8);
-        textView2.setText(a[0]);
-        textView3=findViewById(R.id.textView10);
-        textView3.setText(a[1]);
+        textView5=findViewById(R.id.textView8);
+        textView5.setText(Integer.toString(a[0]));
+        textView6=findViewById(R.id.textView10);
+        textView6.setText(Integer.toString(a[1]+a[0]));
 
     }
 }

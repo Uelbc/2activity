@@ -16,14 +16,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView1;
     private TextView textView2;
     private TextView textView3;
-    private Button btn;
     public static final String VALUE="123";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn=findViewById(R.id.button);
+        Button btn = findViewById(R.id.button);
         seekBar1=findViewById(R.id.seekBar);
         seekBar2=findViewById(R.id.seekBar4);
         seekBar3=findViewById(R.id.seekBar6);
@@ -81,15 +80,16 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int A0=seekBar1.getProgress()*10000;
-                double st= 3;
+                int A0=seekBar1.getProgress();
+                int st= 3;
                 int ans = 0;
-                int M=seekBar3.getProgress()*10000;
+                int M=seekBar3.getProgress();
+                int ans2= A0*10000+M*10000*(seekBar2.getProgress()*12-1);
                 for (int i = 0; i<seekBar2.getProgress()*12; i+=1){
-                    ans+= A0+(A0*st*30/365)/100;
-                    A0+=ans+M;
+                    ans+= (A0*10000*st*30/365)/100;
+                    A0+=M;
                 }
-                int [] b = new int[] {A0, A0-(seekBar1.getProgress()*10000+seekBar3.getProgress()*10000*12*seekBar2.getProgress())};
+                int [] b = new int[] {ans, ans2};
 
                 Intent intent = new Intent(MainActivity.this,MainActivity2.class);
                 intent.putExtra(VALUE, b);
